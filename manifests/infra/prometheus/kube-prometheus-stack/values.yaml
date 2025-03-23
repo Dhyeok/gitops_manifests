@@ -778,7 +778,7 @@ alertmanager:
 
     ## Service type
     ##
-    type: ClusterIP
+    type: NodePort
 
   ## Configuration for creating a separate Service for each statefulset Alertmanager replica
   ##
@@ -1406,6 +1406,7 @@ grafana:
   ## Passed to grafana subchart and used by servicemonitor below
   ##
   service:
+    type: NodePort
     portName: http-web
     ipFamilies: []
     ipFamilyPolicy: ""
@@ -3374,7 +3375,7 @@ prometheus:
 
     ## Service type
     ##
-    type: ClusterIP
+    type: NodePort
 
     ## Service dual stack
     ##
@@ -3503,7 +3504,7 @@ prometheus:
 
     ## Service type
     ##
-    type: ClusterIP
+    type: NodePort
 
     ## Additional ports to open for Prometheus service
     ##
@@ -4245,10 +4246,10 @@ prometheus:
     ## Prometheus StorageSpec for persistent data
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/platform/storage.md
     ##
-    storageSpec: {}
+    storageSpec: 
     ## Using PersistentVolumeClaim
     ##
-      volumeClaimTemplate:
+     volumeClaimTemplate:
         spec:
           storageClassName: nfs-client
           accessModes: ["ReadWriteOnce"]
