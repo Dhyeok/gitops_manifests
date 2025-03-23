@@ -9,7 +9,16 @@ spec:
   source:
     repoURL: 'https://github.com/Dhyeok/gitops_manifests.git'
     targetRevision: HEAD
-    path: gitops_manifests/manifests/infra/prometheus/kube-prometheus-stack
+    path: manifests/infra/prometheus/kube-prometheus-stack
   destination:
     namespace: monitoring
     server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+        #      - Replace=true
+
