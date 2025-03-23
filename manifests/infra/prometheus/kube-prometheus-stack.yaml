@@ -1,0 +1,14 @@
+# gitops_manifests/manifests/infra/prometheus/kube-prometheus-stack.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Dhyeok/gitops_manifests.git'
+    targetRevision: HEAD
+    path: gitops_manifests/manifests/infra/prometheus/kube-prometheus-stack
+  destination:
+    namespace: monitoring
+    server: 'https://kubernetes.default.svc'
